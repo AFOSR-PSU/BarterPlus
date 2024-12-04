@@ -6,7 +6,7 @@
 
     <groupId>crashcringle</groupId>
     <artifactId>malmo-server-plugin</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.7</version>
     <packaging>jar</packaging>
 
     <name>Malmo Server Plugin</name>
@@ -16,7 +16,6 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
     <build>
         <finalName>${project.name} v${project.version}</finalName>
         <defaultGoal>clean package</defaultGoal>
@@ -31,7 +30,29 @@
                 </includes>
             </resource>
         </resources>
-
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.4</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>9</source>
+                    <target>9</target>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
     <repositories>
@@ -66,7 +87,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.19.2-R0.1-SNAPSHOT</version>
+            <version>1.19.3-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -81,5 +102,28 @@
             <version>1.18.22</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ipvp</groupId>
+            <artifactId>canvas</artifactId>
+            <scope>compile</scope>
+            <version>1.7.0-SNAPSHOT</version>
+        </dependency>
+        <!-- MySQL Connector -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.30</version>
+        </dependency>
+      <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-core</artifactId>
+        <version>6.1.6.Final</version>
+      </dependency>
+
     </dependencies>
 </project>
